@@ -1,13 +1,16 @@
 {
   "name": "ablespace",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
+  "description": "Pyramid - Task Management System",
+  "workspaces": [
+    "apps/*"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs"
+    "dev:api": "npm run dev -w apps/api",
+    "build": "npm run build -w apps/api && npm run build -w apps/web",
+    "build:api": "npm run build -w apps/api",
+    "start:api": "npm run start:prod -w apps/api",
+    "lint": "npm run lint -w apps/web"
+  }
 }
