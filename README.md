@@ -2,6 +2,8 @@
 
 Pyramid is a task manager built for the Full Stack Developer assessment. It follows the given Figma design and includes a Kanban board, a list view, a task detail page, projects, light/dark themes with accent colors, guest login, and Google login.
 
+---
+
 ## Tech stack
 
 - Frontend (`apps/web`): Next.js (App Router), TypeScript, Tailwind CSS v4, lucide-react. Runs on port 3000.
@@ -9,7 +11,7 @@ Pyramid is a task manager built for the Full Stack Developer assessment. It foll
 - Database: MongoDB.
 - The project is a monorepo managed with npm workspaces.
 
-Part 2, the AbleSpace "Take Data" write-up, is in [PART2.md](PART2.md).
+---
 
 ## Features
 
@@ -24,30 +26,34 @@ Part 2, the AbleSpace "Take Data" write-up, is in [PART2.md](PART2.md).
 - Themes: light/dark mode and 6 accent colors (Amber, Blue, Pink, Rose, Emerald, Black). Your choice is saved and stays after a refresh.
 - Responsive: works on desktop, tablet, and mobile. On small screens the sidebar becomes a slide-in drawer.
 
-New accounts start empty, so just add your own tasks and projects.
+---
 
 ## Folder structure
 
 ```
 ablespace/
-  apps/
-    api/            NestJS backend (port 4000)
-      src/
-        auth/       guest + Google login, JWT guard
-        users/      user schema and profile endpoints
-        tasks/      task schema, DTOs, CRUD, comments
-        projects/   project schema, DTOs, CRUD
-        common/     shared constants (statuses, priorities)
-        app.module.ts
-        main.ts
-    web/            Next.js frontend (port 3000)
-      src/
-        app/        pages (login, tasks, projects, settings)
-        components/ ui, layout, tasks, task-detail, projects
-        lib/        api client, contexts, types, utils
-  package.json      workspaces and shared scripts
-  README.md
+├── apps/
+│   ├── api/                         # NestJS Backend
+│   │   └── src/
+│   │       ├── auth/                # Guest + Google login, JWT guard
+│   │       ├── users/               # User schema and profile endpoints
+│   │       ├── tasks/               # Task schema, DTOs, CRUD, comments
+│   │       ├── projects/            # Project schema, DTOs, CRUD
+│   │       ├── common/              # Shared constants (statuses, priorities)
+│   │       ├── app.module.ts        # Root application module configuration
+│   │       └── main.ts              # Server entry point & port configuration
+│   │
+│   └── web/                         # Next.js Frontend
+│       └── src/
+│           ├── app/                 # Pages (login, tasks, projects, settings)
+│           ├── components/          # UI, layout, tasks, task-detail, projects
+│           └── lib/                 # API client, contexts, types, utils
+│
+├── package.json                     # Monorepo workspaces & shared scripts
+└── README.md                        # Documentation & setup instructions
 ```
+
+---
 
 ## Getting started
 
@@ -92,6 +98,8 @@ npm run dev:web
 
 Open http://localhost:3000 and click "Continue as Guest".
 
+---
+
 ## Google login (optional)
 
 1. In the Google Cloud Console, create an OAuth Client ID of type "Web application".
@@ -99,6 +107,8 @@ Open http://localhost:3000 and click "Continue as Guest".
 3. Put that client ID in `GOOGLE_CLIENT_ID` (`apps/api/.env`) and `NEXT_PUBLIC_GOOGLE_CLIENT_ID` (`apps/web/.env`). Use the same value in both.
 
 Guest login works without this.
+
+---
 
 ## How it works
 
@@ -108,14 +118,17 @@ Guest login works without this.
 - Shared UI pieces live in `apps/web/src/components/ui` (Button, Input, Modal, Popover, Avatar, Calendar, and so on) and are reused across the app.
 - Request data is validated with class-validator, and the API returns clear messages with the right status codes (400 for bad input, 401 when not logged in, 404 when not found).
 
+---
+
 ## Notes
 
-- The Figma only showed the light theme, so the dark theme colors are mine, using the same neutral palette.
 - Priority has 5 levels everywhere (No Priority, Urgent, High, Medium, Low).
 - On the detail page, the small header icons (lock, watchers, share) are there for looks only.
 - You can drag a card between columns to change its status. Reordering cards inside a column was left out to keep things simple.
 - The font is Inter, a close match to the design.
 - If port 3000 or 4000 is already in use, change the port in both `.env` files (`PORT` and `NEXT_PUBLIC_API_URL`) to the same new value and restart.
+
+---
 
 ## Scripts (run from the repo root)
 
@@ -124,3 +137,5 @@ Guest login works without this.
 - `npm run build` - build both apps
 - `npm run start:api` / `npm run start:web` - run the built apps
 - `npm run lint` - check the frontend code
+
+---
