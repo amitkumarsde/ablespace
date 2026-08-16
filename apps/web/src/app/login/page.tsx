@@ -44,7 +44,7 @@ export default function LoginPage() {
   const [error, setError] = useState('');
   const tokenClient = useRef<TokenClient | null>(null);
 
-  // Already signed in — skip the login screen.
+  // If already signed in, go straight to the app.
   useEffect(() => {
     if (user) router.replace('/tasks');
   }, [user, router]);

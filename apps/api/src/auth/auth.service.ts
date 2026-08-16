@@ -18,13 +18,12 @@ export class AuthService {
     private readonly config: ConfigService,
   ) {}
 
-  // Guest login — create a throwaway account.
   async guestLogin() {
     const user = await this.usersService.create({ name: 'Guest', isGuest: true });
     return this.buildAuthResponse(user);
   }
 
-  // Google login — verify the access token, then find or create the user.
+  // Find the user by their Google email, or create one on first login.
   async googleLogin(accessToken: string) {
     const profile = await this.fetchGoogleProfile(accessToken);
     let user = await this.usersService.findByEmail(profile.email);
@@ -39,7 +38,7 @@ export class AuthService {
     return this.buildAuthResponse(user);
   }
 
-  // Verify the token and read the Google profile.
+  // Check the token belongs to this app, then read the Google profile.
   private async fetchGoogleProfile(accessToken: string): Promise<GoogleProfile> {
     const clientId = this.config.get<string>('GOOGLE_CLIENT_ID');
 
@@ -58,7 +57,6 @@ export class AuthService {
     return { email: p.email, name: p.name || p.email, picture: p.picture };
   }
 
-  // Sign a JWT and return it with the user.
   private buildAuthResponse(user: UserDocument) {
     const token = this.jwtService.sign({
       sub: user.id,

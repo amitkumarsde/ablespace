@@ -26,7 +26,6 @@ export class UsersService {
     return this.toPublic(user);
   }
 
-  // Return only the public user fields.
   toPublic(user: UserDocument) {
     return {
       id: user.id,

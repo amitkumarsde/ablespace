@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Don't auto-generate AGENTS.md / CLAUDE.md files.
+  // Skip generating the extra agent rule files.
   agentRules: false,
 };
 

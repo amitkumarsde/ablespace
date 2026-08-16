@@ -9,7 +9,6 @@ import { CurrentUser } from '../auth/current-user.decorator';
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  // Current signed-in user.
   @Get('me')
   async me(@CurrentUser() user: { sub: string }) {
     const found = await this.usersService.findById(user.sub);

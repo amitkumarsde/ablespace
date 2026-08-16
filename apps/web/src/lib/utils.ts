@@ -1,9 +1,7 @@
-// Join truthy class names.
 export function cn(...classes: (string | false | null | undefined)[]) {
   return classes.filter(Boolean).join(' ');
 }
 
-// Get initials from a name, e.g. "QA Team" -> "QT".
 export function initials(name: string) {
   const parts = name.trim().split(/\s+/).filter(Boolean);
   if (parts.length === 0) return '?';

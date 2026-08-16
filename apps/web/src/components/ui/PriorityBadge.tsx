@@ -3,7 +3,7 @@ import { PRIORITY_META } from '@/lib/constants';
 import { cn } from '@/lib/utils';
 
 // Bar icon; the filled count and color show the priority.
-export function PriorityIcon({ priority, size = 14 }: { priority: Priority; size?: number }) {
+function PriorityIcon({ priority, size = 14 }: { priority: Priority; size?: number }) {
   const { bars, color } = PRIORITY_META[priority];
   const heights = [5, 8, 11]; // three bars, out of 12
   return (
