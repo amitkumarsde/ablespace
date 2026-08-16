@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+/* Enable class-based dark mode. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Light theme (default). */
+:root {
+  --background: #ffffff;
+  --foreground: #18181b;
+  --card: #ffffff;
+  --card-foreground: #18181b;
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
+  --border: #e4e4e7;
+  --input: #e4e4e7;
+  --primary: #18181b;
+  --primary-foreground: #fafafa;
+  --secondary: #f4f4f5;
+  --secondary-foreground: #18181b;
+  --sidebar: #fafafa;
+  --sidebar-border: #ececee;
+
+  /* Accent (Color Mode) — Blue is the default. */
+  --accent: #2563eb;
+  --accent-foreground: #ffffff;
+  --accent-soft: #eff6ff;
+}
+
+/* Dark theme. */
+.dark {
+  --background: #09090b;
+  --foreground: #fafafa;
+  --card: #131316;
+  --card-foreground: #fafafa;
+  --muted: #1c1c1f;
+  --muted-foreground: #a1a1aa;
+  --border: #27272a;
+  --input: #27272a;
+  --primary: #fafafa;
+  --primary-foreground: #18181b;
+  --secondary: #1c1c1f;
+  --secondary-foreground: #fafafa;
+  --sidebar: #0c0c0e;
+  --sidebar-border: #1f1f22;
+
+  --accent: #3b82f6;
+  --accent-foreground: #ffffff;
+  --accent-soft: #172554;
+}
+
+/* Accent options (Color Mode). */
+[data-accent="amber"]  { --accent: #f59e0b; --accent-foreground: #ffffff; --accent-soft: #fffbeb; }
+[data-accent="blue"]   { --accent: #2563eb; --accent-foreground: #ffffff; --accent-soft: #eff6ff; }
+[data-accent="pink"]   { --accent: #ec4899; --accent-foreground: #ffffff; --accent-soft: #fdf2f8; }
+[data-accent="rose"]   { --accent: #f43f5e; --accent-foreground: #ffffff; --accent-soft: #fff1f2; }
+[data-accent="emerald"]{ --accent: #10b981; --accent-foreground: #ffffff; --accent-soft: #ecfdf5; }
+[data-accent="black"]  { --accent: #18181b; --accent-foreground: #ffffff; --accent-soft: #f4f4f5; }
+
+.dark[data-accent="amber"]  { --accent-soft: #2a2005; }
+.dark[data-accent="blue"]   { --accent: #3b82f6; --accent-soft: #172554; }
+.dark[data-accent="pink"]   { --accent-soft: #2b0b1c; }
+.dark[data-accent="rose"]   { --accent-soft: #2a0a12; }
+.dark[data-accent="emerald"]{ --accent-soft: #052e21; }
+.dark[data-accent="black"]  { --accent: #fafafa; --accent-foreground: #18181b; --accent-soft: #1c1c1f; }
+
+/* Map design tokens to Tailwind color utilities. */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent-soft: var(--accent-soft);
+  --font-sans: var(--font-inter);
+}
+
+* {
+  border-color: var(--border);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Thin, subtle scrollbars to match the clean UI. */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 9999px; }
+::-webkit-scrollbar-track { background: transparent; }
