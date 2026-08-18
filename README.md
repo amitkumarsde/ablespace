@@ -6,8 +6,8 @@ Pyramid is a task manager built for the Full Stack Developer assessment. It foll
 
 ## Tech stack
 
-- Frontend (`apps/web`): Next.js (App Router), TypeScript, Tailwind CSS v4, lucide-react. Runs on port 3000.
-- Backend (`apps/api`): NestJS, Mongoose, JWT. Runs on port 4000.
+- Frontend (`apps/web`): Next.js (App Router), TypeScript, Tailwind CSS v4, lucide-react.
+- Backend (`apps/api`): NestJS, Mongoose, JWT.
 - Database: MongoDB.
 - The project is a monorepo managed with npm workspaces.
 
